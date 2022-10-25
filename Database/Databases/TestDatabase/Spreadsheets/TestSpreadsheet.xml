@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<spreadsheet name="TestSpreadsheet">
+  <field name="id" type="int">
+    <cell>0</cell>
+    <cell>2</cell>
+    <cell>3</cell>
+    <cell>4</cell>
+    <cell>1</cell>
+    <cell>0</cell>
+  </field>
+  <field name="names" type="string">
+    <cell>one</cell>
+    <cell>two</cell>
+    <cell>three</cell>
+    <cell>four</cell>
+    <cell>empty</cell>
+    <cell>asd</cell>
+  </field>
+  <field name="test" type="int">
+    <cell>0</cell>
+    <cell>1</cell>
+    <cell>0</cell>
+    <cell>0</cell>
+    <cell>0</cell>
+    <cell>0</cell>
+  </field>
+</spreadsheet>
