@@ -9,24 +9,21 @@ namespace DBLab
     class Field
     {
         public Spreadsheet spreadsheet;
+        int number;
         public string type;
         public string name;
-        public Field(Spreadsheet parentSpreadsheet, string fieldType, string fieldName)
+        public Field(Spreadsheet parentSpreadsheet, string fieldType, string fieldName, int fieldNumber)
         {
             type = fieldType;
             spreadsheet = parentSpreadsheet;
             name = fieldName;
-        }
-        public List<string> GetValuesAsStrings(int from, int to)
-        {
-            return FileManager.GetStringFieldFromXml(this, from, to);
-           
+            number = fieldNumber;
         }
         public bool EditCell(int row, string rawValue)
         {
             if(CheckTypeValidity(rawValue))
             {
-                FileManager.EditCell(this, row, rawValue);
+                FileManager.EditCell(spreadsheet, number, row, rawValue);
                 return true;
             }
             else

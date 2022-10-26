@@ -23,19 +23,12 @@ namespace DBLab
         }
         private static bool ShowSpreadsheet(string[] arguments)
         {
-            Console.WriteLine(spreadsheet.GetData(Convert.ToInt32(arguments[0]), Convert.ToInt32(arguments[1])));
+            Console.WriteLine(spreadsheet.GetData(arguments[0], arguments[1]));
             return true;
         }
         private static bool EditCellData(string[] arguments)
         {
-            int fieldNumber = Int32.Parse(arguments[0]);
-            int rowNumber = Int32.Parse(arguments[1]);
-            string rawValue = arguments[2];
-            if (spreadsheet.EditData(fieldNumber, rowNumber, rawValue))
-                Console.WriteLine("Edit succesfull");
-            else
-                Console.WriteLine("Wrong type");
-
+            Console.WriteLine(spreadsheet.EditData(arguments[0], arguments[1], arguments[2]));
             return true;
         }
         private static bool AddField(string[] arguments)

@@ -24,41 +24,23 @@ namespace DBLab
         
         private static bool ShowAllSpreadsheetNames(string[] arguments)
         {
-            List<string> databasePaths = database.spreadsheetNames;
-            foreach (string path in databasePaths)
-            {
-                Console.WriteLine(path.Split(@"\")[^1]);
-            }
+            Console.Write(database.GetSpreadsheetNames());
             return true;
         }
         private static bool EditSpreadsheet(string[] arguments)
         {
-            if (database.CheckIfSpreadsheetExist(arguments[0]))
-            {
-                SpreadsheetInteractionMenu spreadsheetInteractionMenu = new(database, arguments[0]);
-                spreadsheetInteractionMenu.Start("Spreadsheet menu started");
-                refreshCommands(commandsWithDescriptions);
-                Console.WriteLine("Database menu started");
-            }
-            else
-                Console.WriteLine("Invalid name, enter 'ShowAllSpreadsheetNames' to veiw all spreadsheet's names");
+            Console.WriteLine(database.EditSpreadsheet(arguments[0]));
+            refreshCommands(commandsWithDescriptions);
             return true;
         }
         private static bool AddSpreadsheet(string[] arguments)
         {
-            if (database.AddSpreadsheet(arguments[0]))
-                Console.WriteLine("Added spreadsheet succesfully");
-            else
-                Console.WriteLine("This Name already exists");
+            Console.WriteLine(database.AddSpreadsheet(arguments[0]));
             return true;
         }
         private static bool DeleteSpreadsheet(string[] arguments)
         {
-            if (database.CheckIfSpreadsheetExist(arguments[0]))
-            {
-                FileManager.DeleteSpreadsheet(database.name, arguments[0]);
-                database.spreadsheetNames.Remove(arguments[0]);
-            }
+            Console.WriteLine(database.DeleteSpreadsheet(arguments[0]));
             return true;
         }
     }

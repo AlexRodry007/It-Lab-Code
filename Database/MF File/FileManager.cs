@@ -15,15 +15,19 @@ namespace DBLab
         private const string databasesDirectoryPath = @"..\..\..\Databases\";
         private static string CalculatePath(Spreadsheet spreadsheet)
         {
-            return databasesDirectoryPath + @"\" + spreadsheet.database.name + @"\Spreadsheets\" + spreadsheet.name + ".xml";
+            return $"{databasesDirectoryPath}\\{spreadsheet.database.name}\\Spreadsheets\\{spreadsheet.name}.xml";
         }
         private static string CalculatePath(Field field)
         {
-            return databasesDirectoryPath + @"\" + field.spreadsheet.database.name + @"\Spreadsheets\" + field.spreadsheet.name + ".xml";
+            return $"{databasesDirectoryPath}\\{field.spreadsheet.database.name}\\Spreadsheets\\{field.spreadsheet.name}.xml";
         }
         private static string CalculatePath(string databaseName, string fieldName)
         {
-            return databasesDirectoryPath + @"\" + databaseName + @"\Spreadsheets\" + fieldName + ".xml";
+            return $"{databasesDirectoryPath}\\{databaseName}\\Spreadsheets\\{fieldName}.xml";
+        }
+        private static string CalculatePath(string databaseName)
+        {
+            return $"{databasesDirectoryPath}\\{databaseName}\\Spreadsheets\\";
         }
         public static string[] GetAllDatabasePaths()
         {
@@ -36,48 +40,34 @@ namespace DBLab
         }
         public static bool CheckIfSpreadsheetExist(string databaseName, string spreadsheetName)
         {
-            return Directory.GetFiles(databasesDirectoryPath + @"\" + databaseName + @"\Spreadsheets\").Contains(CalculatePath(databaseName, spreadsheetName));
+            return Directory.GetFiles(CalculatePath(databaseName)).Contains(CalculatePath(databaseName, spreadsheetName));
         }
         public static string[] GetAllSpreadsheetPathsFromDatabase(string databaseName)
         {
-            return Directory.GetFiles(databasesDirectoryPath + @"\" + databaseName + @"\Spreadsheets\");
+            return Directory.GetFiles(CalculatePath(databaseName));
         }
-        public static List<string> GetStringFieldFromXml(Field field, int from, int to)
+        public static List<string> GetRow(Spreadsheet spreadsheet, int row)
         {
-            List<string> result = new();
-            using (XmlReader reader = XmlReader.Create(CalculatePath(field))) 
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(CalculatePath(spreadsheet));
+            List<string> result = new List<string>();
+            foreach(XmlNode cell in xmlDoc.DocumentElement.LastChild.ChildNodes[row].ChildNodes)
             {
-                while (reader.ReadToFollowing("field"))
-                {
-                    if (reader.GetAttribute("name") == field.name)
-                    {
-                        XmlReader inner = reader.ReadSubtree();
-                        for (int i = 0; i < from; i++)
-                        {
-                            inner.ReadToFollowing("cell");
-                        }
-                        for (int i = from; inner.ReadToFollowing("cell") && i <= to; i++)
-                        {
-                            if (inner.LocalName == "cell")
-                                result.Add(inner.ReadElementContentAsString());
-                        }
-                        inner.Close();
-                    }
-                    else reader.Skip();
-                }
-                
+                result.Add(cell.InnerText);
             }
-                return result;
+            return result;
         }
         public static List<Field> GetAllFieldsFromSpreadsheet(Spreadsheet spreadsheet)
         {
             List<Field> result = new();
-            using (XmlReader reader = XmlReader.Create(CalculatePath(spreadsheet)))
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(CalculatePath(spreadsheet));
+            int i = 0;
+            foreach(XmlNode fieldNode in xmlDoc.DocumentElement.ChildNodes)
             {
-                while(reader.ReadToFollowing("field"))
-                {
-                    result.Add(new Field(spreadsheet, reader.GetAttribute("type"), reader.GetAttribute("name")));
-                }
+                if(fieldNode.LocalName=="field")                
+                    result.Add(new Field(spreadsheet, fieldNode.Attributes.GetNamedItem("type").Value, fieldNode.Attributes.GetNamedItem("name").Value,i++));
+                
             }
             return result;
         }
@@ -86,10 +76,10 @@ namespace DBLab
             int length = 0;
             using (XmlReader reader = XmlReader.Create(CalculatePath(spreadsheet)))
             {
-                if(reader.ReadToFollowing("field"))
+                if(reader.ReadToFollowing("data"))
                 {
                     XmlReader inner = reader.ReadSubtree();
-                    while (inner.ReadToFollowing("cell"))
+                    while (inner.ReadToFollowing("row"))
                     {
                         length++;
                     }
@@ -97,18 +87,13 @@ namespace DBLab
             }
             return length;
         }
-        public static void EditCell(Field field, int row, string value)
+        public static void EditCell(Spreadsheet spreadsheet,int field, int row, string value)
         {
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(CalculatePath(field));
-            foreach(XmlNode node in xmlDoc.DocumentElement.ChildNodes)
-            {
-                if(node.Attributes["name"].Value == field.name)
-                {
-                    node.ChildNodes[row].InnerText = value;
-                    xmlDoc.Save(CalculatePath(field));
-                }
-            }
+            xmlDoc.Load(CalculatePath(spreadsheet));
+            XmlNode dataNode = xmlDoc.DocumentElement.LastChild;
+            dataNode.ChildNodes[row].ChildNodes[field].InnerText = value;
+            xmlDoc.Save(CalculatePath(spreadsheet));
         }
         public static void AddField(Spreadsheet spreadsheet, string name, string type, string defaultValue)
         {
@@ -122,28 +107,31 @@ namespace DBLab
             typeAttribute.Value = type;
             newField.Attributes.Append(nameAttribute);
             newField.Attributes.Append(typeAttribute);
-            
-            for (int i = 0; i < CalculateSpreadsheetLength(spreadsheet); i++)
+
+            xmlDoc.DocumentElement.InsertBefore(newField, xmlDoc.DocumentElement.LastChild);
+            foreach(XmlNode rowNode in xmlDoc.DocumentElement.LastChild.ChildNodes)
             {
                 XmlNode newCell = xmlDoc.CreateElement("cell");
                 newCell.InnerText = defaultValue;
-                newField.AppendChild(newCell);
+                rowNode.AppendChild(newCell);
             }
-            xmlDoc.DocumentElement.AppendChild(newField);
             xmlDoc.Save(CalculatePath(spreadsheet));
-        }
+        }       
         public static void AddRow(Spreadsheet spreadsheet, List<string> data)
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(CalculatePath(spreadsheet));
-            int col = 0;
-            foreach(XmlNode node in xmlDoc.DocumentElement.ChildNodes)
+
+            XmlNode row = xmlDoc.CreateElement("row");
+
+            foreach(string colValue in data)
             {
                 XmlNode newCell = xmlDoc.CreateElement("cell");
-                newCell.InnerText = data[col];
-                node.AppendChild(newCell);
-                col++;
+                newCell.InnerText = colValue;
+                row.AppendChild(newCell);
             }
+
+            xmlDoc.DocumentElement.LastChild.AppendChild(row);
             xmlDoc.Save(CalculatePath(spreadsheet));
         }
         public static void AddSpreadsheet(Database database, string spreadsheetName)

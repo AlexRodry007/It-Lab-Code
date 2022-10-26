@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DBLab.Database" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAEAAAABAAAAAAAEEAAAAAAAAAAAAIA=</HashCode>
+      <FileName>MF Database\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.DatabaseChecker" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>MF Database\DatabaseChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.DatabaseInteractionMenu">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAABACAAAAAAAAAAAGAAAAAAAAAAAAIA=</HashCode>
+      <FileName>MF Database\DatabaseInteractionMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.DatabaseMessanger" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAAIAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>MF Database\DatabaseMessanger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.Field" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAQAAAAAAAQAAACAAFAAAAAACAAAAAAAA=</HashCode>
+      <FileName>MF Field\Field.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.FieldInteractionMenu">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MF Field\FieldInteractionMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.FileManager" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAxAgAEAQAgAAAAAAAAQCAAAgAAEQAAGgAAAAAAAIA=</HashCode>
+      <FileName>MF File\FileManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.Spreadsheet" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAEEACAAABAAFAAAAAAAAAEAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>MF Spreadsheet\Spreadsheet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.SpreadsheetInteractionMenu">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEAAAAAAAACAAAAAAACAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>MF Spreadsheet\SpreadsheetInteractionMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.MainInteractionMenu">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAACAAAAAAAAAAAEAAIAAAQAAAAAAA=</HashCode>
+      <FileName>MainInteractionMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.MetaInteractionMenu" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAABAACAIAAAAAAAAAIEAABAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>MetaInteractionMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.Program" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

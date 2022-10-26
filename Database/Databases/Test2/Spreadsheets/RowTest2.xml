@@ -1,0 +1,13 @@
+<spreadsheet name="RowTest2">
+  <field name="names" type="string" />
+  <field name="id" type="int">
+    <row>
+      <cell>1</cell>
+      <cell>Alex</cell>
+    </row>
+    <row>
+      <cell>2</cell>
+      <cell>empty</cell>
+    </row>
+  </field>
+</spreadsheet>
