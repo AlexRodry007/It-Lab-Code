@@ -8,7 +8,7 @@ namespace DBLab
 {
     class SpreadsheetInteractionMenu : MetaInteractionMenu
     {
-        static Spreadsheet spreadsheet;
+        static SpreadsheetManager spreadsheet;
         private static Dictionary<Func<string[], bool>, string> commandsWithDescriptions = new Dictionary<Func<string[], bool>, string>
         {
             {ShowSpreadsheet,"Shows spreadsheet data, requires two integer arguments \"from\" and \"to\"" },
@@ -16,19 +16,19 @@ namespace DBLab
             {AddField, "Adds a new field, requires two atributes \"name\" and \"type\"" },
             {AddRow, "Adds a new row, and fills it with data from aruments, or default values" }
         };
-        public SpreadsheetInteractionMenu(Database parentDatabase, string spreadheetName)
+        public SpreadsheetInteractionMenu(DatabaseManager parentDatabase, string spreadheetName, FileManager mainFileManager)
         {
-            spreadsheet = new Spreadsheet(parentDatabase, spreadheetName);
+            spreadsheet = new SpreadsheetManager(parentDatabase, spreadheetName, mainFileManager);
             refreshCommands(commandsWithDescriptions);
         }
         private static bool ShowSpreadsheet(string[] arguments)
         {
-            Console.WriteLine(spreadsheet.GetData(arguments[0], arguments[1]));
+            spreadsheet.GetData(arguments[0], arguments[1]);
             return true;
         }
         private static bool EditCellData(string[] arguments)
         {
-            Console.WriteLine(spreadsheet.EditData(arguments[0], arguments[1], arguments[2]));
+            spreadsheet.EditData(arguments[0], arguments[1], arguments[2]);
             return true;
         }
         private static bool AddField(string[] arguments)

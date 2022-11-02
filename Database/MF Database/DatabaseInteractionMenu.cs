@@ -15,32 +15,32 @@ namespace DBLab
             { AddSpreadsheet, "Creates new Spreadsheet, requires one argument \"name\"" },
             { DeleteSpreadsheet, "Deletes spreadsheet, requires one argument \"name\"" }
         };
-        static Database database;
-        public DatabaseInteractionMenu(string databaseName)
+        static DatabaseManager database;
+        public DatabaseInteractionMenu(string databaseName, FileManager mainFileManager)
         {
-            database = new Database(databaseName);
+            database = new DatabaseManager(databaseName, mainFileManager);
             refreshCommands(commandsWithDescriptions);
         }
         
         private static bool ShowAllSpreadsheetNames(string[] arguments)
         {
-            Console.Write(database.GetSpreadsheetNames());
+            database.GetSpreadsheetNames();
             return true;
         }
         private static bool EditSpreadsheet(string[] arguments)
         {
-            Console.WriteLine(database.EditSpreadsheet(arguments[0]));
+            database.EditSpreadsheet(arguments[0]);
             refreshCommands(commandsWithDescriptions);
             return true;
         }
         private static bool AddSpreadsheet(string[] arguments)
         {
-            Console.WriteLine(database.AddSpreadsheet(arguments[0]));
+            database.AddSpreadsheet(arguments[0]);
             return true;
         }
         private static bool DeleteSpreadsheet(string[] arguments)
         {
-            Console.WriteLine(database.DeleteSpreadsheet(arguments[0]));
+            database.DeleteSpreadsheet(arguments[0]);
             return true;
         }
     }

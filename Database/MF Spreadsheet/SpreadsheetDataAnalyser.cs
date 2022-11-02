@@ -8,14 +8,23 @@ namespace DBLab
 {
     class SpreadsheetDataAnalyser
     {
-        public static List<List<string>> GetData(Spreadsheet spreadsheet,int from, int to)
+        SpreadsheetManager spreadsheet;
+        public SpreadsheetDataAnalyser(SpreadsheetManager parentSpreadsheet)
         {
-            List<List<string>> result = new();
-            for (int i = from; i < to; i++)
+            spreadsheet = parentSpreadsheet;
+        }
+        
+        public string CalculateDefaultValue(string type)
+        {
+            switch (type)
             {
-                result.Add(FileManager.GetRow(spreadsheet, i));
+                case "int":
+                    return "0";
+                case "string":
+                    return "empty";
+                default:
+                    return "error";
             }
-            return result;
         }
     }
 }

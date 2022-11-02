@@ -35,7 +35,9 @@ namespace DBLab
             string command;
             do
             {
+                Console.Write(">>");
                 command = Console.ReadLine();
+                Console.WriteLine("---------------");
             } while (ExecuteCommand(command));
         }
         public void Start(string message)
@@ -44,7 +46,9 @@ namespace DBLab
             string command;
             do
             {
+                Console.Write(">>");
                 command = Console.ReadLine();
+                Console.WriteLine("---------------");
             } while (ExecuteCommand(command));
         }
         private static bool Help(string[] arguments)

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
   <Class Name="DBLab.Database" Collapsed="true">
     <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -8,9 +8,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DBLab.DatabaseChecker" Collapsed="true">
-    <Position X="11.5" Y="0.5" Width="1.5" />
+    <Position X="15" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>MF Database\DatabaseChecker.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -21,17 +21,17 @@
       <FileName>MF Database\DatabaseInteractionMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DBLab.DatabaseMessanger" Collapsed="true">
+  <Class Name="DBLab.DatabaseUI" Collapsed="true">
     <Position X="13.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABIAAIAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
-      <FileName>MF Database\DatabaseMessanger.cs</FileName>
+      <HashCode>AAAABIAAIAAAAACAAAAAAAAAAAAEABAAAAAAAAAAAIA=</HashCode>
+      <FileName>MF Database\DatabaseUI.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DBLab.Field" Collapsed="true">
     <Position X="9.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABAAQAAAAAAAQAAACAAFAAAAAACAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAACAAFAAAAAACAAAAAAAA=</HashCode>
       <FileName>MF Field\Field.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,15 +45,15 @@
   <Class Name="DBLab.FileManager" Collapsed="true">
     <Position X="11.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAxAgAEAQAgAAAAAAAAQCAAAgAAEQAAGgAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAgAAAAAAQAAAAAAAAAAAAAQAAAAAAAEACQAAAQA=</HashCode>
       <FileName>MF File\FileManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DBLab.Spreadsheet" Collapsed="true">
-    <Position X="9.75" Y="2.5" Width="1.5" />
+  <Class Name="DBLab.SpreadsheetManager" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAEEACAAABAAFAAAAAAAAAEAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>MF Spreadsheet\Spreadsheet.cs</FileName>
+      <HashCode>AACAAAAEEAAAAIBAAFAAAAAAAAAEQAAAEAAQAAAAAAA=</HashCode>
+      <FileName>MF Spreadsheet\SpreadsheetManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DBLab.SpreadsheetInteractionMenu">
@@ -66,8 +66,8 @@
   <Class Name="DBLab.MainInteractionMenu">
     <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAACAAAAAAAAAAAEAAIAAAQAAAAAAA=</HashCode>
-      <FileName>MainInteractionMenu.cs</FileName>
+      <HashCode>AAAgAAAAAAAAAAAACAAAAAIAAAAAEAAIAAAQAAAAAAA=</HashCode>
+      <FileName>MF Main Menu\MainInteractionMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DBLab.MetaInteractionMenu" Collapsed="true">
@@ -78,10 +78,73 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DBLab.Program" Collapsed="true">
-    <Position X="13.25" Y="1.5" Width="1.5" />
+    <Position X="13.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.DatabaseManager" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAACAIEAAAABAAAAAAAEEAAAgAIAAAAAAIA=</HashCode>
+      <FileName>MF Database\DatabaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.DatabaseXmlManager" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAAAAAAAAAAAAAAAAABgAAAAAAgAEAAAAAAIA=</HashCode>
+      <FileName>MF Database\DatabaseXmlManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.MainMenuDataAnalyser" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAggAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MF Main Menu\MainMenuDataAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.MainMenuManager" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAIAAAAAAQAAgAAAAEAAIgAAQAAAAAAA=</HashCode>
+      <FileName>MF Main Menu\MainMenuManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.MainMenuUI" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAeAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MF Main Menu\MainMenuUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.MainMenuXmlManager" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAEAAAAAEAAAgAAAAAAAAAA=</HashCode>
+      <FileName>MF Main Menu\MainMenuXmlManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.SpreadsheetDataAnalyser" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MF Spreadsheet\SpreadsheetDataAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.SpreadsheetUI" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAIAAAAAAAAIAgAAAEABAAAAAAAAAAAAA=</HashCode>
+      <FileName>MF Spreadsheet\SpreadsheetUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DBLab.SpreadsheetXmlManager" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEEQAgAAAAAAAAQAAACAAAAAAAkAAAAAAAAAg=</HashCode>
+      <FileName>MF Spreadsheet\SpreadsheetXmlManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

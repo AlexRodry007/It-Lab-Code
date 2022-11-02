@@ -5,7 +5,7 @@
   <field name="test2" type="string" />
   <data>
     <row>
-      <cell>0</cell>
+      <cell>1</cell>
       <cell>one</cell>
       <cell>empty</cell>
     </row>

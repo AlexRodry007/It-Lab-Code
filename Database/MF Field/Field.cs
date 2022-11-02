@@ -8,26 +8,16 @@ namespace DBLab
 {
     class Field
     {
-        public Spreadsheet spreadsheet;
+        public SpreadsheetManager spreadsheet;
         int number;
         public string type;
         public string name;
-        public Field(Spreadsheet parentSpreadsheet, string fieldType, string fieldName, int fieldNumber)
+        public Field(SpreadsheetManager parentSpreadsheet, string fieldType, string fieldName, int fieldNumber)
         {
             type = fieldType;
             spreadsheet = parentSpreadsheet;
             name = fieldName;
             number = fieldNumber;
-        }
-        public bool EditCell(int row, string rawValue)
-        {
-            if(CheckTypeValidity(rawValue))
-            {
-                FileManager.EditCell(spreadsheet, number, row, rawValue);
-                return true;
-            }
-            else
-            return false;
         }
         public bool CheckTypeValidity(string rawValue)
         {

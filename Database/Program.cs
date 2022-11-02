@@ -9,9 +9,11 @@ namespace DBLab
     {  
         static void Main(string[] args)
         {
-
-            MainInteractionMenu mainInteractionMenu = new MainInteractionMenu();
-            mainInteractionMenu.Start("Main menu started");   
+            string databaseDirectoryRelaivePath = @"..\..\..\Databases\";
+            FileManager mainFileManager = new FileManager(databaseDirectoryRelaivePath);
+            MainInteractionMenu mainInteractionMenu = new MainInteractionMenu(mainFileManager);
+            Console.WriteLine("Main menu started");
+            mainInteractionMenu.Start();   
         }
     }
     

@@ -8,7 +8,12 @@ namespace DBLab
 {
     class DatabaseChecker
     {
-        public static bool CheckIfSpreadsheetExist(string name, Database database)
+        DatabaseManager database;
+        public DatabaseChecker(DatabaseManager parentDatabase)
+        {
+            database = parentDatabase;
+        }
+        public bool CheckIfSpreadsheetExist(string name)
         {
             return database.spreadsheetNames.Contains(name);
         }
