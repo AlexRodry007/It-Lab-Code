@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    class FieldInteractionMenu : MetaInteractionMenu
+    public class FieldInteractionMenu : MetaInteractionMenu
     {
         static Field field;
         private static Dictionary<Func<string[], bool>, string> commandsWithDescriptions = new Dictionary<Func<string[], bool>, string>

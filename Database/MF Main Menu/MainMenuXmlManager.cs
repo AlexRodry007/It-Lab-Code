@@ -7,7 +7,7 @@ using System.IO;
 
 namespace DBLab
 {
-    class MainMenuXmlManager
+    public class MainMenuXmlManager
     {
         FileManager fileManager;
         public MainMenuXmlManager(FileManager mainFileManager)

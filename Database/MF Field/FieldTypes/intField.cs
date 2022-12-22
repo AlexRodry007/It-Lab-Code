@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    /*class IntField : Field
+    /*public class IntField : Field
     {
         new public bool CheckTypeValidity(string rawValue)
         {

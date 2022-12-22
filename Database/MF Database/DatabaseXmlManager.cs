@@ -8,7 +8,7 @@ using System.IO;
 
 namespace DBLab
 {
-    class DatabaseXmlManager
+    public class DatabaseXmlManager
     {
         string databaseName;
         string pathToSpreadsheetsFolder;
@@ -45,8 +45,10 @@ namespace DBLab
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode rootNode = xmlDoc.CreateElement("spreadsheet");
             XmlAttribute attribute = xmlDoc.CreateAttribute("name");
+            XmlNode rows = xmlDoc.CreateElement("rows");
             attribute.Value = spreadsheetName;
             rootNode.Attributes.Append(attribute);
+            rootNode.AppendChild(rows);
             xmlDoc.AppendChild(rootNode);
             fileManager.WriteFile(CalculatePath(spreadsheetName), xmlDoc.OuterXml);
         }

@@ -1,0 +1,1 @@
+<spreadsheet name="new"><field name="intfield" type="int" /><field name="stringfield" type="string" /><field name="name" type="string" /><rows><row><cell>1</cell><cell>one</cell><cell>alex</cell></row><row><cell>2</cell><cell>two</cell><cell>berta</cell></row><row><cell>3</cell><cell>empty</cell><cell>charlie</cell></row></rows></spreadsheet>

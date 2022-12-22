@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    class SpreadsheetUI
+    public class SpreadsheetUI
     {
         string name;
         public SpreadsheetUI(string spreadsheetName)
@@ -17,7 +17,7 @@ namespace DBLab
         {
             Console.WriteLine($"In spreadsheet \"{name}\":");
         }
-        public void SpreadsheetContentsMessage(List<Field> fields, List<List<string>> data)
+        public void SpreadsheetContentsMessage(List<Field> fields, List<List<string>> data, SpreadsheetDataAnalyser spreadsheetDataAnalyser)
         {
             Separator();
             string message = "";
@@ -28,13 +28,17 @@ namespace DBLab
             message += "\n";
             foreach(List<string> row in data)
             {
-                foreach(string cellData in row)
+                for(int i = 0; i < row.Count; i++)
                 {
-                    message += $"{cellData} # ";
+                    message += $"{spreadsheetDataAnalyser.ConvertCellData(row[i], fields[i].type)} # ";
                 }
                 message += "\n";
             }
             Console.WriteLine(message);
+        }
+        public void ShowSingleCell(string data)
+        {
+            Console.WriteLine(data);
         }
         public void CellEdititngMessage(bool success)
         {

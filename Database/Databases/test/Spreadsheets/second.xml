@@ -1,0 +1,1 @@
+<spreadsheet name="second"><field name="id" type="int" /><field name="name" type="string" /><field name="chars" type="char" /><rows><row><cell>1</cell><cell>alex</cell><cell>34</cell></row><row><cell>2</cell><cell>berta</cell><cell>33</cell></row><row><cell>3</cell><cell>charlie</cell><cell>33</cell></row></rows></spreadsheet>

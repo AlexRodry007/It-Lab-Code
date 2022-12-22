@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace DBLab
 {
-    class Program
+    public class Program
     {  
         static void Main(string[] args)
         {

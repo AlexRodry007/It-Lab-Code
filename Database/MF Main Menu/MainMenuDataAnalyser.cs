@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    class MainMenuDataAnalyser
+    public class MainMenuDataAnalyser
     {
         MainMenuManager mainMenuManager;
         public MainMenuDataAnalyser(MainMenuManager parentMainMenu)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    class MainMenuUI
+    public class MainMenuUI
     {
         public MainMenuUI()
         { }

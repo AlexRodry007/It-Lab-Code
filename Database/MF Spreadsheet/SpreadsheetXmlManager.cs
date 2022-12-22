@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace DBLab
 {
-    class SpreadsheetXmlManager
+    public class SpreadsheetXmlManager
     {
         SpreadsheetManager spreadsheet;
         FileManager fileManager;
@@ -34,6 +34,12 @@ namespace DBLab
                 result.Add(row);
             }
             return result;
+        }
+        public string GetCellData(int fieldNumber, int rowNumber)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(fileManager.ReadFile(pathToFile));
+            return xmlDocument.DocumentElement.LastChild.ChildNodes[rowNumber].ChildNodes[fieldNumber].InnerText;
         }
         public List<Field> GetAllFieldsFromSpreadsheet()
         {
@@ -84,6 +90,30 @@ namespace DBLab
             }
             fileManager.WriteFile(pathToFile, xmlDocument.OuterXml);
         }
+        public void AddField(string name, string type, List<string> data)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(fileManager.ReadFile(pathToFile));
+
+            XmlNode newField = xmlDocument.CreateElement("field");
+            XmlAttribute nameAttribute = xmlDocument.CreateAttribute("name");
+            nameAttribute.Value = name;
+            XmlAttribute typeAttribute = xmlDocument.CreateAttribute("type");
+            typeAttribute.Value = type;
+            newField.Attributes.Append(nameAttribute);
+            newField.Attributes.Append(typeAttribute);
+
+            xmlDocument.DocumentElement.InsertBefore(newField, xmlDocument.DocumentElement.LastChild);
+            int i = 0;
+            foreach (XmlNode rowNode in xmlDocument.DocumentElement.LastChild.ChildNodes)
+            {
+                XmlNode newCell = xmlDocument.CreateElement("cell");
+                newCell.InnerText = data[i];
+                rowNode.AppendChild(newCell);
+                i++;
+            }
+            fileManager.WriteFile(pathToFile, xmlDocument.OuterXml);
+        }
         public void AddRow(List<string> data)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -99,6 +129,33 @@ namespace DBLab
             }
 
             xmlDocument.DocumentElement.LastChild.AppendChild(row);
+            fileManager.WriteFile(pathToFile, xmlDocument.OuterXml);
+        }
+        public List<string> GetFieldData(int fieldNumber)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(fileManager.ReadFile(pathToFile));
+
+            List<string> result = new();
+
+            foreach(XmlNode xmlNode in xmlDocument.DocumentElement.LastChild.ChildNodes)
+            {
+                result.Add(xmlNode.ChildNodes[fieldNumber].InnerText);
+            }
+            return result;
+        }
+        public void DeleteField(int fieldNumber)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(fileManager.ReadFile(pathToFile));
+
+            List<string> result = new();
+
+            foreach (XmlNode xmlNode in xmlDocument.DocumentElement.LastChild.ChildNodes)
+            {
+                xmlNode.RemoveChild(xmlNode.ChildNodes[fieldNumber]);
+            }
+            xmlDocument.DocumentElement.RemoveChild(xmlDocument.DocumentElement.ChildNodes[fieldNumber]);
             fileManager.WriteFile(pathToFile, xmlDocument.OuterXml);
         }
     }

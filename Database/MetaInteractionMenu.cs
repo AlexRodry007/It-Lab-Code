@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    abstract class MetaInteractionMenu
+    abstract public class MetaInteractionMenu
     {
         protected static Dictionary<Func<string[], bool>, string> allCommandsWithDescriptions = new Dictionary<Func<string[], bool>, string>();
         private static Dictionary<Func<string[], bool>, string> metaCommandsWithDescriptions = new Dictionary<Func<string[], bool>, string>

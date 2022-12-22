@@ -7,10 +7,11 @@ using System.IO;
 using System.Collections;
 using System.Xml;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace DBLab
 {
-    class FileManager
+    public class FileManager
     {
 
         private string databasesDirectoryPath;
@@ -41,6 +42,21 @@ namespace DBLab
         public void WriteFile(string pathFromMainDirectory, string fileContents)
         {
             File.WriteAllText(databasesDirectoryPath + pathFromMainDirectory, fileContents);
+        }
+        public bool CheckIfFileExists(string pathFromMainDirectory)
+        {
+            return File.Exists(databasesDirectoryPath + pathFromMainDirectory);
+        }
+        public void StartFile(string pathFromMainDirectory)
+        {
+            if (!File.Exists(databasesDirectoryPath + pathFromMainDirectory))
+                File.WriteAllText(databasesDirectoryPath + pathFromMainDirectory, "Default text");
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(databasesDirectoryPath + pathFromMainDirectory)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
         }
     }
 }

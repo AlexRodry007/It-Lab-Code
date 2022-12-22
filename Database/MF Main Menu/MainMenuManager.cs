@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    class MainMenuManager
+    public class MainMenuManager
     {
         FileManager fileManager;
         MainMenuXmlManager xmlManager;
@@ -51,6 +51,8 @@ namespace DBLab
             if (!mainMenuDataAnalyser.CheckIfNameExists(xmlManager.GetDatabasePaths(), databaseName))
             {
                 xmlManager.AddDatabase(databaseName);
+                fileManager.CreateDirectory($"{databaseName}\\Texts\\");
+                fileManager.WriteFile($"{databaseName}\\Texts\\default.txt", "Default text");
                 mainMenuUI.DatabaseAddingMessage(true);
             }
             else

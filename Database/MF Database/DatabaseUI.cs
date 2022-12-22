@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab
 {
-    class DatabaseUI
+    public class DatabaseUI
     {
         string name;
         public DatabaseUI(string databaseName)

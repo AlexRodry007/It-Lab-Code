@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace DBLab
 {
-    class MainInteractionMenu : MetaInteractionMenu
+    public class MainInteractionMenu : MetaInteractionMenu
     {
         static MainMenuManager mainMenuManager;
         private static Dictionary<Func<string[], bool>, string> commandsWithDescriptions = new Dictionary<Func<string[], bool>, string>
